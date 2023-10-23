@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+
+<script>
+$(function(){
+	
+	//실행하자마자 lprod가 출력 실행
+	$.ajax({
+		url : '/jqpro/LprodList.do',
+		type : 'get',
+		success : function(res){
+			code = "";
+			
+			$.each(res, function(i, v){
+				code += `<option value='${res[i].lprod_gu}'>${res[i].lprod_nm}</option>`
+			})
+			
+			$('#lprod').html(code);
+			$('#lprod').trigger('change');
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status)
+		},
+		dataType : 'json'
+		
+	}) //lprod
+	
+	//lprod를 선택하면 gu값을 얻어서 prod의 목록을 출력한다.
+	$('#lprod').on('change', function(){
+		//this : select이고 값은 option에서 얻는다
+		//select와 option은 부모 자식
+		//$('#lprod option:selected').val()
+		//alert($('option:selected', this).val());
+	
+	    guvalue = $('option:selected', this).val();
+	    
+	    $.ajax({
+	    	url : '/jqpro/ProdList.do',
+	    	data : { "gu" : guvalue },
+	    	type : 'post',
+	    	success : function(res){
+	    		
+    			code = "";
+    			
+	    		if(res.flag == "ok") {
+	    			
+	    			$.each(res.datas, function(i, v){
+	    				code += `<option value="${v.id}">${v.name}</option>`
+	    				
+	    			})
+	    			
+	    			$('#prod').html(code);
+	    			$('#prod').trigger('change');
+	    			
+	    		} else {
+	    			code += `<option value="0">데이터없음</option>`;
+	    			$('#prod').html(code);
+	    			
+	    			//detail이 없기 때문에 이미지를 출력한다.
+	    			vimg = $('<img src="../images/spongebob.png" alt="spongebob.png">');
+	    			
+	    			$('#result1').html(vimg);
+	    		}
+	    	},
+	    	error : function(xhr){
+	    		alert("상태 : " + xhr.status);
+	    	},
+	    	dataType : 'json'
+	    })  //ajax
+		
+	})  //prod change
+	
+	
+	//prod를 선택하면 option의 value 값 - id - 를 얻어서 서버로 전송
+	//option의 value값이 0이면 아무것도 수행하지 않는다.
+	$('#prod').on('change', function(){
+		
+		//$('#prod option:selected').val()
+		idvalue = $('option:selected', this).val();
+		//alert(idvalue);
+		
+		$.ajax({
+			url : "http://localhost/jqpro/ProdDetail.do",
+			data : { "id" : idvalue },
+			type : 'post',
+			success : function(res){
+				code = "<table>";
+				code += "<tr><td>항목</td><td>내용</td></tr>";
+				/*
+				code += "<tr><td>PROD_ID</td><td>" + res.prod_id +"</td></tr>";
+				code += "<tr><td>PROD_NAME</td><td>" + res.prod_name +"</td></tr>";
+				code += "<tr><td>PROD_LGU</td><td>" + res.prod_lgu +"</td></tr>";
+				code += "<tr><td>PROD_BUYER</td><td>" + res.prod_buyer +"</td></tr>";
+				code += "<tr><td>PROD_COST</td><td>" + res.prod_cost +"</td></tr>";
+				code += "<tr><td>PROD_SALE</td><td>" + res.prod_sale +"</td></tr>";
+				code += "<tr><td>PROD_PRICE</td><td>" + res.prod_price +"</td></tr>";
+				code += "<tr><td>PROD_OUTLINE</td><td>" + res.prod_outline +"</td></tr>";
+				code += "<tr><td>PROD_DETAIL</td><td>" + res.prod_detail +"</td></tr>";
+				code += "<tr><td>PROD_COLOR</td><td>" + res.prod_color +"</td></tr>";
+				code += "<tr><td>PROD_SIZE</td><td>" + res.prod_size +"</td></tr>"; 
+				*/
+				$.each(res, function(i, v){
+    				code += `<tr><td>${i}</td><td>${v}</td></tr>`;
+    			})
+				
+				$('#result1').html(code);
+				
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})	
+	})
+	
+})  //$function
+</script>
+
+<style>
+img{
+  width : 100px;
+  height : 100px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+ <select id="lprod"></select>
+ 
+ <select id="prod"></select>
+
+ <div id="result1" class="result"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+header, aside, section, footer{
+  box-sizing : border-box;
+  border-radius : 10px;
+  margin : 2px;
+}
+
+header,footer{
+  height : 200px;
+  background : #FFD700;
+  padding : 5px;
+  padding-top : 10px;
+}
+
+header{
+  height : 200px;
+  background : yellow;
+}
+
+footer{
+  background : #FFA0FF;
+  height : 100px;
+  clear : both;
+  text-align : center;
+}
+
+header h1 {
+  margin-top : 50px;
+}
+
+header h1, header p{
+  text-align : center;
+}
+
+aside{
+  background : #FFA6C5;
+  height : 500px;
+  width : calc(35% - 10px);
+  padding : 20px;
+  float : left;
+}
+
+aside a:link{
+  text-decoration : none;
+}
+
+section{
+  float : right;
+  background : green;
+  width : calc(65% - 5px);
+  height : 500px;
+  padding : 20px;
+}
+
+section div{
+  width : 95%;
+  height : 38%;
+  margin : 5px auto;
+  padding : 5px;
+  border : 1px dotted yellow;
+  border-radius : 20px;
+}
+
+section div h3{
+  margin-left : 30px;
+}
+
+img{
+  width : 95%;
+  height : 95%;
+}
+
+@media screen and (max-width : 600px) {
+  aside, section{
+  width : 100%
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+ <h1>My Blog Page</h1>
+ <p>시멘틱 태그로 만들어진 페이지 입니다.</p>
+</header>
+
+<aside>
+  <h3>Links</h3>
+  <ul>
+    <li> <a href="https://www.w3schools.com">w3schools</a></li>
+    <li> <a href="http://www.naver.com">Naver</a></li>
+    <li> <a href="https://www.daum.net">Daum</a></li>
+  </ul>
+  
+  <figure>
+   <img src="../images/spongebob.png" alt="spongebob.png">
+   <figcaption>스폰지밥</figcaption>
+  </figure>
+</aside>
+
+<section>
+ <div>
+  <h3>Semantic Tags</h3>
+    <p>시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적
+  을 명확하게 알려주는 요소이다. 레이아웃을 만들 때 쓰는 것. 의미가 있는 
+  요소라면 div보다는 시맨틱 태그를 사용해준다.</p>
+  </div>
+  
+ <div>
+  <h3>div와 span</h3>
+    <p>div은 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용
+  되는 태그이다. span요소는 인라인 요소로서 텍스트를 위한 컨테이너로 
+  사용할 수 있다.</p>
+ </div>
+</section>
+
+
+<footer>
+  <p>Copyright (c)2019 Hong</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DDIT HOUSE</title>
+<link rel="stylesheet" href="maincss.css">
+</head>
+<body id="main">
+
+<header id="mainhead">
+ <h1 id="mainh1">
+ <img src="../images/라이언쇼핑.png" alt="라이언쇼핑.png" id="mainimg">
+ <a href="main.html">DDIT HOUSE</a>
+ </h1>
+</header>
+
+<nav>
+  <ul class="menubar">
+  <li> <a href="main.html">H O M E</a> </li>
+  <li> <a href="#">N E W</a></li>
+  <li> <a href="#">B E S T</a></li>
+  <li> <a href="#">S A L E</a></li>
+  <li> <a href="#">M Y &nbsp; P A G E</a></li>
+ </ul>
+</nav>
+
+<div class="maindiv">
+<aside id="left">
+  <h3>카 테 고 리</h3>
+  <ul id="category">
+    <li> <a href="furniture.html" target="main-frame">가구</a></li>
+    <li> <a href="digital.html" target="main-frame">가전/디지털</a></li>
+    <li> <a href="kitchen.html" target="main-frame">주방용품</a></li>
+    <li> <a href="plant.html" target="main-frame">식물</a></li>
+    <li> <a href="light.html" target="main-frame">조명</a></li>
+    <li> <a href="organized.html" target="main-frame">수납/정리</a></li>
+    <li> <a href="daily.html" target="main-frame">생필품</a></li>
+    <li> <a href="video.html" target="main-frame">도움말</a></li>
+  </ul>
+</aside>
+
+<section style="display:flex;">
+ <article>
+    <iframe id="frame" src="furniture.html" name="main-frame" target="main-frame" frameborder></iframe>
+  </article>
+</section>
+
+
+<aside id="right">
+  <div id="shopcart"></div>
+  <h3>Shopping Cart</h3>
+  <p style="font-size: small;">현재 쇼핑카트에 물품이 없습니다.</p><br>
+  <p><a href="shopcart.html" target="main-frame">쇼핑카트 보기</a></p>
+  
+  <div id="login"></div>
+  <h4>Log In</h4>
+  <form action="#" method="post"></form>
+  <label id="idinput">아이디</label>
+  <input type="text" name=id><br>
+  
+  <label id="passinput">패스워드</label>
+  <input type="password" name=pass>
+  
+  <br>
+  <div id="buttonAll">
+    <div id="loginbutton">
+      <button type="submit">로그인</button>
+      <button type="reset">초기화</button>
+    </div>
+     
+    <div id="idpass">
+    <p><a href="회원가입register.html" id="join">회원가입</a></p>
+    <p><a href="#" style="color: blue;" id="findpass">비밀번호 분실</a></p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <p>Copyright(c) 2023 DDIT HOUSE</p>
+</footer>
+
+</body>
+</html>

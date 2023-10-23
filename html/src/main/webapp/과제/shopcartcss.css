@@ -1,0 +1,19 @@
+@charset "UTF-8";
+table{
+  margin : 20px auto;
+  border: 5px dotted #FF28A7;
+}
+
+td, th{
+  width : 200px;
+  height : 100px;
+  text-align : center;
+}
+
+#cart{
+  text-align : center;
+}
+
+.buttons{
+  text-align: center;
+}

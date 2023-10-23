@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.7.0.min.js"></script>
+
+<script>
+
+function changePage(){
+	
+	// 나이를 입력
+	age = prompt("나이 입력");
+	
+	// 15살 이상이면 네이버로 수행하고 그게 아니면 이동 불가
+	if(age < 15){
+		event.preventDefault();	
+		alert("접근 불가");
+	}
+	
+}
+
+/* $(document).ready(function(){
+	이거와 같음
+}) */
+
+/* $(function(){ }) 또 다른 방법 */
+
+$( () => {
+	
+	str = "";
+	
+	$('#btnview').on('click', ()=>{
+		// 입력한 정보(내용)를 가져온다
+		
+		let vuser = "이름 : " + document.getElementById('user').value + "<br>";
+		
+		
+		//let vuser = "이름 : "+ $('#user').val() + "<br>";
+		let vgend = "성별 : " + $('.gend:checked').val() + "<br>";
+		let vintro = "소개 : <br> " + $('#intro').val() + "<br>";
+		let vwork = "직업 : " + $('#work option:selected').val() + "<br>";
+		
+		vintro = vintro.replace(/\r/g, "").replace(/\n/g, "<br>");
+		
+		
+		str += vuser + vgend + vintro + vwork
+		
+		//$('#result1').html(str);
+		
+		document.querySelector('#result1').innerHTML = str;
+		
+	})
+	
+	$('#btnchange').on('click',()=>{
+		
+		event.preventDefault();   // button의 고유 기능을 제거
+		
+		// 이름을 입력 - prompt
+		let vuser = prompt("이름 입력");
+		
+		// id = "user"인 text에 출력 - text의 내용을 변경
+		//document.getElementById('user').value = vuser;
+		//document.querySelector('#user').value = vuser;
+		$('#user').val(vuser);
+		
+	})
+	
+	
+})
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+   <form>
+     <label for="user">이름</label>
+     <input type="text" id="user" value="korea"><br>
+    
+     <label for="name">성별</label> 
+     <input type="radio" class="gend" name="gend" value="남자" checked >남자
+     <input type="radio" class="gend" name="gend" value="여자"  >여자<br>
+    
+     <label for="intro">소개</label><br>
+     <textarea id="intro" cols="40" rows="4"></textarea> <br>
+    
+     <label for="work">직업</label>
+     <select id="work">
+       <option value="programmer">프로그래머</option>
+       <option value="progammer">프로게이머</option>
+       <option value="whitehand">백수</option>
+     </select><br>
+      
+     <button type="button" id="btnview">조사하기 </button>
+     <button id="btnchange">이름변경 </button>
+     
+     <a href="http://www.naver.com" onclick="changePage()">네이버</a>
+   </form>
+   <div id="result1" class="result"></div>
+</div>
+
+</body>
+</html>

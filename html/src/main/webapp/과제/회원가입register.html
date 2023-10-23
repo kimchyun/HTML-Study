@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보입력</title>
+<link rel="stylesheet" href="registercss.css">
+</head>
+<body>
+  <form id="register">
+    <fieldset>
+      <legend>회원정보입력</legend>
+      <label class="enroll">아이디</label>
+      <input type="text" name="id" id="id">
+      <input type="button" id="check-button" value="중복검사">
+      <br>
+      
+      <label class="enroll">패스워드</label>
+      <input type="password" name="pass" class="join2">
+      <br>
+      
+      <label class="enroll">패스워드 확인</label>
+      <input type="password" name="pass" class="join2">
+      <br>
+      
+      <label class="enroll">이름</label>
+      <input type="text" name="name" placeholder="홍길동" class="join2">
+      <br>
+      
+      <label class="enroll">휴대폰번호</label>
+      <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-1234-5678" class="join2">
+      <br>
+      
+      <label class="enroll">이메일</label>
+      <input type="email" pattern="[a-zA-Z]+[0-9]*@.[a-zA-Z]+[0-9]*(\.[a-zA-Z]+){1,2}" 
+             placeholder="abc123@google.com" class="join2">
+      <br>
+      
+      <label class="enroll">생일	</label>
+      <input type="date" name="bir" size="30" class="join2">
+      <br>
+      
+      <label class="enroll">홈페이지</label>
+      <input type="url" name="website" placeholder="www.google.com" size="30" class="join2">
+      <br>
+      
+      <label>성별</label>
+      <input type="radio" name="gender" id="man" >남자
+      <input type="radio" name="gender" id="woman" >여자
+      
+      <br><br>
+      <input type="submit" class="submit">
+      <input type="reset" class="reset">
+    </fieldset>
+    <br>
+  <p id="back">
+    <a href="main.html">Back to Home</a>
+  </p>
+  
+  </form>
+</body>
+</html>
